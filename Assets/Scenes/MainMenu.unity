@@ -3690,7 +3690,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hoverScale: 1.1
   hoverDuration: 0.2
-  hoverColor: {r: 0.53333336, g: 0.7490196, b: 1, a: 1}
+  hoverColor: {r: 0.11764706, g: 0.11764706, b: 0.18039216, a: 1}
   clickScale: 0.95
   clickDuration: 0.1
 --- !u!1 &1364877136
@@ -4185,7 +4185,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hoverScale: 1.1
   hoverDuration: 0.2
-  hoverColor: {r: 1, g: 0.504717, b: 0.51816237, a: 1}
+  hoverColor: {r: 0.5, g: 0.2004717, b: 0.2004717, a: 1}
   clickScale: 0.95
   clickDuration: 0.1
 --- !u!114 &1399842383
@@ -4418,7 +4418,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hoverScale: 1.1
   hoverDuration: 0.2
-  hoverColor: {r: 0.53333336, g: 0.7490196, b: 1, a: 1}
+  hoverColor: {r: 0.11764706, g: 0.11764706, b: 0.18039216, a: 1}
   clickScale: 0.95
   clickDuration: 0.1
 --- !u!1 &1416003443
@@ -4866,7 +4866,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hoverScale: 1.1
   hoverDuration: 0.2
-  hoverColor: {r: 0.53333336, g: 0.7490196, b: 1, a: 1}
+  hoverColor: {r: 0.11764706, g: 0.11764706, b: 0.18039216, a: 1}
   clickScale: 0.95
   clickDuration: 0.1
 --- !u!1 &1440430045
@@ -6217,7 +6217,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hoverScale: 1.1
   hoverDuration: 0.2
-  hoverColor: {r: 0.53333336, g: 0.7490196, b: 1, a: 1}
+  hoverColor: {r: 0.11764706, g: 0.11764706, b: 0.18039216, a: 1}
   clickScale: 0.95
   clickDuration: 0.1
 --- !u!114 &1793422554
@@ -6356,7 +6356,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hoverScale: 1.1
   hoverDuration: 0.2
-  hoverColor: {r: 0.53333336, g: 0.7490196, b: 1, a: 1}
+  hoverColor: {r: 0.11764706, g: 0.11764706, b: 0.18039216, a: 1}
   clickScale: 0.95
   clickDuration: 0.1
 --- !u!114 &1801150037
@@ -6612,11 +6612,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3082b84efbcc04fc9819967662c9dc33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverScale: 1.1
-  hoverDuration: 0.2
-  hoverColor: {r: 0.5330188, g: 0.748076, b: 1, a: 1}
-  clickScale: 0.95
-  clickDuration: 0.1
+  hoverScale: 1.05
+  hoverDuration: 0.15
+  hoverColor: {r: 0.11414205, g: 0.115901604, b: 0.1792453, a: 1}
+  clickScale: 0.98
+  clickDuration: 0.08
 --- !u!1 &1819882726
 GameObject:
   m_ObjectHideFlags: 0
@@ -7503,7 +7503,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hoverScale: 1.1
   hoverDuration: 0.2
-  hoverColor: {r: 0.53333336, g: 0.7490196, b: 1, a: 1}
+  hoverColor: {r: 0.11764706, g: 0.11764706, b: 0.18039216, a: 1}
   clickScale: 0.95
   clickDuration: 0.1
 --- !u!1 &2061144158
@@ -7778,7 +7778,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hoverScale: 1.1
   hoverDuration: 0.2
-  hoverColor: {r: 0.53333336, g: 0.7490196, b: 1, a: 1}
+  hoverColor: {r: 0.11764706, g: 0.11764706, b: 0.18039216, a: 1}
   clickScale: 0.95
   clickDuration: 0.1
 --- !u!1 &1234567890123456789
