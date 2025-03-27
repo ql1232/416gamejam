@@ -91,21 +91,21 @@ public class MainMenuUI : MonoBehaviour
 
     private void ShowPanel(GameObject panel)
     {
-        // Hide all panels with animation
-        if (panel != mainMenuPanel)
+        // Hide other panels ONLY IF they are active
+        if (panel != mainMenuPanel && mainMenuPanel.activeSelf)
         {
             mainMenuAnimator.HidePanel();
         }
-        if (panel != settingsPanel)
+        if (panel != settingsPanel && settingsPanel.activeSelf)
         {
             settingsAnimator.HidePanel();
         }
-        if (panel != creditsPanel)
+        if (panel != creditsPanel && creditsPanel.activeSelf)
         {
             creditsAnimator.HidePanel();
         }
 
-        // Show the requested panel with animation
+        // Show the requested panel
         if (panel == mainMenuPanel)
         {
             mainMenuAnimator.ShowPanel();
@@ -119,4 +119,5 @@ public class MainMenuUI : MonoBehaviour
             creditsAnimator.ShowPanel();
         }
     }
+
 } 
