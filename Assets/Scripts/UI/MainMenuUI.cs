@@ -8,18 +8,22 @@ public class MainMenuUI : MonoBehaviour
     [SerializeField] private GameObject mainMenuPanel;
     [SerializeField] private GameObject settingsPanel;
     [SerializeField] private GameObject creditsPanel;
+    [SerializeField] private GameObject howToPlayPanel;
 
     [Header("Buttons")]
     [SerializeField] private Button playButton;
     [SerializeField] private Button settingsButton;
     [SerializeField] private Button creditsButton;
+    [SerializeField] private Button howToPlayButton;
     [SerializeField] private Button quitButton;
     [SerializeField] private Button settingsBackButton;
     [SerializeField] private Button creditsBackButton;
+    [SerializeField] private Button howToPlayBackButton;
 
     private UIPanelAnimator mainMenuAnimator;
     private UIPanelAnimator settingsAnimator;
     private UIPanelAnimator creditsAnimator;
+    private UIPanelAnimator howToPlayAnimator;
 
     private void Awake()
     {
@@ -27,11 +31,13 @@ public class MainMenuUI : MonoBehaviour
         mainMenuAnimator = mainMenuPanel.GetComponent<UIPanelAnimator>();
         settingsAnimator = settingsPanel.GetComponent<UIPanelAnimator>();
         creditsAnimator = creditsPanel.GetComponent<UIPanelAnimator>();
+        howToPlayAnimator = howToPlayPanel.GetComponent<UIPanelAnimator>();
 
         // Add CanvasGroup components if they don't exist
         if (mainMenuAnimator == null) mainMenuAnimator = mainMenuPanel.AddComponent<UIPanelAnimator>();
         if (settingsAnimator == null) settingsAnimator = settingsPanel.AddComponent<UIPanelAnimator>();
         if (creditsAnimator == null) creditsAnimator = creditsPanel.AddComponent<UIPanelAnimator>();
+        if (howToPlayAnimator == null) howToPlayAnimator = howToPlayPanel.AddComponent<UIPanelAnimator>();
     }
 
     private void Start()
@@ -46,6 +52,9 @@ public class MainMenuUI : MonoBehaviour
         if (creditsButton != null)
             creditsButton.onClick.AddListener(OnCreditsButtonClicked);
         
+        if (howToPlayButton != null)
+            howToPlayButton.onClick.AddListener(OnHowToPlayButtonClicked);
+        
         if (quitButton != null)
             quitButton.onClick.AddListener(OnQuitButtonClicked);
         
@@ -54,6 +63,9 @@ public class MainMenuUI : MonoBehaviour
         
         if (creditsBackButton != null)
             creditsBackButton.onClick.AddListener(OnBackButtonClicked);
+        
+        if (howToPlayBackButton != null)
+            howToPlayBackButton.onClick.AddListener(OnBackButtonClicked);
 
         // Show main menu panel by default
         ShowPanel(mainMenuPanel);
@@ -73,6 +85,11 @@ public class MainMenuUI : MonoBehaviour
     private void OnCreditsButtonClicked()
     {
         ShowPanel(creditsPanel);
+    }
+
+    private void OnHowToPlayButtonClicked()
+    {
+        ShowPanel(howToPlayPanel);
     }
 
     private void OnQuitButtonClicked()
@@ -104,6 +121,10 @@ public class MainMenuUI : MonoBehaviour
         {
             creditsAnimator.HidePanel();
         }
+        if (panel != howToPlayPanel && howToPlayPanel.activeSelf)
+        {
+            howToPlayAnimator.HidePanel();
+        }
 
         // Show the requested panel
         if (panel == mainMenuPanel)
@@ -118,6 +139,9 @@ public class MainMenuUI : MonoBehaviour
         {
             creditsAnimator.ShowPanel();
         }
+        else if (panel == howToPlayPanel)
+        {
+            howToPlayAnimator.ShowPanel();
+        }
     }
-
 } 
