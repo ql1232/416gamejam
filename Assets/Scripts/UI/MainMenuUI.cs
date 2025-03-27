@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class MainMenuUI : MonoBehaviour
 {
@@ -74,7 +75,7 @@ public class MainMenuUI : MonoBehaviour
     private void OnPlayButtonClicked()
     {
         // TODO: Implement game start logic
-        Debug.Log("Play button clicked");
+        SceneManager.LoadScene("SampleScene");
     }
 
     private void OnSettingsButtonClicked()
