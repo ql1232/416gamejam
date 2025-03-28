@@ -21,6 +21,7 @@ public class MockScoreSimulator : MonoBehaviour
             Debug.LogWarning("MockScoreSimulator: GameUI not found!");
             return;
         }
+        if (gameUI.IsGameOver()) return;
 
         timer += Time.deltaTime;
         if (timer >= 1f)
@@ -28,6 +29,12 @@ public class MockScoreSimulator : MonoBehaviour
             Debug.Log("Adding point!");
             gameUI.AddPoints(scoreIncrement);
             timer = 0f;
+        }
+
+        // Test Game Over with a key press
+        if (Input.GetKeyDown(KeyCode.Escape) && gameUI != null)
+        {
+            gameUI.ShowGameOverScreen();
         }
     }
 
