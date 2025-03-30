@@ -32,7 +32,7 @@ public class MockScoreSimulator : MonoBehaviour
         }
 
         // Test Game Over with a key press
-        if (Input.GetKeyDown(KeyCode.Escape) && gameUI != null)
+        if (Input.GetKeyDown(KeyCode.G) && gameUI != null)
         {
             gameUI.ShowGameOverScreen();
         }
