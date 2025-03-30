@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class OutOfFrame : MonoBehaviour
 {
     public Camera userCamera;
-    public float margin = 5f;
+    public float margin = 2.5f;
 
     void Update()
     {
