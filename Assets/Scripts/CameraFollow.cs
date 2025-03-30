@@ -2,21 +2,25 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    // Drag and drop your player GameObject here in the inspector.
     public Transform player;
-
-    // The offset distance between the player and camera.
     private Vector3 offset;
+    private float maxPlayerY;
 
     void Start()
     {
-        // Calculate and store the offset at the start.
         offset = transform.position - player.position;
+        maxPlayerY = player.position.y;
     }
 
-    void LateUpdate()
+    void Update()
     {
-        // Update the camera's position to maintain the offset from the player's position.
-        transform.position = player.position + offset;
+        if (player.position.y > maxPlayerY)
+        {
+            maxPlayerY = player.position.y;
+        }
+
+        Vector3 desiredPosition = player.position + offset;
+        desiredPosition.y = maxPlayerY + offset.y;
+        transform.position = desiredPosition;
     }
 }
