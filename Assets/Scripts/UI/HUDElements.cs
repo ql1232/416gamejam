@@ -1,18 +1,24 @@
 using UnityEngine;
 using TMPro;
 
-public class ScoreDisplayUI : MonoBehaviour
+public class HUDElements : MonoBehaviour
 {
     [Header("Score Display")]
     [SerializeField] private TextMeshProUGUI scoreText;
-    [SerializeField] private TextMeshProUGUI highScoreText;
+    [SerializeField] private TextMeshProUGUI maxHeightText;
+    
+    [Header("Player Stats")]
+    [SerializeField] private TextMeshProUGUI hpText;
+    [SerializeField] private TextMeshProUGUI ammoText;
     
     [Header("Animation Settings")]
     [SerializeField] private float scoreUpdateDuration = 0.5f;
     [SerializeField] private float scorePopupScale = 1.2f;
     
     private int currentScore = 0;
-    private int highScore = 0;
+    private int maxHeight = 0;
+    private int currentHP = 0;
+    private int currentAmmo = 0;
     private RectTransform scoreTextRect;
     private Vector3 originalScale;
 
@@ -31,19 +37,28 @@ public class ScoreDisplayUI : MonoBehaviour
                 originalScale = scoreTextRect.localScale;
             }
         }
-        
-        // Load high score from PlayerPrefs
-        highScore = PlayerPrefs.GetInt("HighScore", 0);
-        UpdateHighScoreDisplay();
+
+        // Initialize all displays
+        UpdateScore(0);
+        UpdateMaxHeight(0);
+        UpdateHP(0);
+        UpdateAmmo(0);
     }
 
-    public void SetTextReferences(TextMeshProUGUI newScoreText, TextMeshProUGUI newHighScoreText)
+    public void SetTextReferences(
+        TextMeshProUGUI newScoreText, 
+        TextMeshProUGUI newMaxHeightText,
+        TextMeshProUGUI newHPText,
+        TextMeshProUGUI newAmmoText)
     {
         scoreText = newScoreText;
-        highScoreText = newHighScoreText;
+        maxHeightText = newMaxHeightText;
+        hpText = newHPText;
+        ammoText = newAmmoText;
         InitializeComponents();
     }
 
+    // Score-related methods
     public void UpdateScore(int newScore)
     {
         if (scoreText == null || scoreTextRect == null) return;
@@ -51,15 +66,10 @@ public class ScoreDisplayUI : MonoBehaviour
         currentScore = newScore;
         scoreText.text = $"Score: {currentScore:0000}";
         
-        // Animate score update
-        StartCoroutine(ScoreUpdateAnimation());
-        
-        // Update high score if necessary
-        if (currentScore > highScore)
+        // Only animate if the GameObject is active
+        if (gameObject.activeInHierarchy)
         {
-            highScore = currentScore;
-            PlayerPrefs.SetInt("HighScore", highScore);
-            UpdateHighScoreDisplay();
+            StartCoroutine(ScoreUpdateAnimation());
         }
     }
 
@@ -68,12 +78,29 @@ public class ScoreDisplayUI : MonoBehaviour
         UpdateScore(currentScore + points);
     }
 
-    private void UpdateHighScoreDisplay()
+    public void UpdateMaxHeight(int height)
     {
-        if (highScoreText != null)
-        {
-            highScoreText.text = $"High Score: {highScore:0000}";
-        }
+        if (maxHeightText == null) return;
+        
+        maxHeight = height;
+        maxHeightText.text = $"Max Height: {maxHeight:0000}";
+    }
+
+    // Player stats methods
+    public void UpdateHP(int hp)
+    {
+        if (hpText == null) return;
+        
+        currentHP = hp;
+        hpText.text = $"HP: {currentHP:0000}";
+    }
+
+    public void UpdateAmmo(int ammo)
+    {
+        if (ammoText == null) return;
+        
+        currentAmmo = ammo;
+        ammoText.text = $"Ammo: {currentAmmo:0000}";
     }
 
     private System.Collections.IEnumerator ScoreUpdateAnimation()
@@ -104,5 +131,7 @@ public class ScoreDisplayUI : MonoBehaviour
 
     // Public methods for external access
     public int GetCurrentScore() => currentScore;
-    public int GetHighScore() => highScore;
+    public int GetMaxHeight() => maxHeight;
+    public int GetCurrentHP() => currentHP;
+    public int GetCurrentAmmo() => currentAmmo;
 } 
