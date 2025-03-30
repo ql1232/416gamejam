@@ -230,6 +230,8 @@ public class GameManager : MonoBehaviour
 
 */
 
+/*
+
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -350,6 +352,194 @@ public class GameManager : MonoBehaviour
         if (ammunition >= amount)
         {
             ammunition -= amount;
+            UpdateUI();
+            return true;
+        }
+        
+        return false;
+    }
+    
+    void GameOver()
+    {
+        gameOver = true;
+        
+        // Show game over panel
+        if (gameOverPanel != null)
+        {
+            gameOverPanel.SetActive(true);
+        }
+        
+        Debug.Log("Game Over!");
+    }
+    
+    public void RestartGame()
+    {
+        // Reload current scene
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+}
+
+*/
+
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
+public class GameManager : MonoBehaviour
+{
+    [Header("Player Stats")]
+    public int playerHealth = 3;
+    public int maxPlayerHealth = 3;
+    public int ammunition = 5;
+    public int maxAmmunition = 10;
+    public int coins = 0;  // Added for coin system
+    
+    [Header("UI Elements")]
+    public Text healthText;
+    public Text ammoText;
+    public Text coinText;  // Added for coin display
+    public GameObject gameOverPanel;
+    
+    [Header("Audio")]
+    public AudioClip coinPickupSound;
+    public AudioClip hurtSound;
+    
+    // Game state
+    private bool gameOver = false;
+    
+    // Singleton instance
+    public static GameManager instance;
+    
+    void Awake()
+    {
+        // Set up singleton
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+    
+    void Start()
+    {
+        // Initialize UI
+        UpdateUI();
+        
+        // Hide game over panel
+        if (gameOverPanel != null)
+        {
+            gameOverPanel.SetActive(false);
+        }
+    }
+    
+    void UpdateUI()
+    {
+        // Update health text
+        if (healthText != null)
+        {
+            healthText.text = "Lives: " + playerHealth;
+        }
+        
+        // Update ammo text
+        if (ammoText != null)
+        {
+            ammoText.text = "Ammo: " + ammunition;
+        }
+        
+        // Update coin text
+        if (coinText != null)
+        {
+            coinText.text = "Coins: " + coins;
+        }
+    }
+    
+    public void TakeDamage(int damage = 1)
+    {
+        if (gameOver) return;
+        
+        // Reduce health
+        playerHealth -= damage;
+        
+        // Play hurt sound
+        if (hurtSound != null)
+        {
+            AudioSource.PlayClipAtPoint(hurtSound, Camera.main.transform.position);
+        }
+        
+        // Check for game over
+        if (playerHealth <= 0)
+        {
+            GameOver();
+        }
+        
+        UpdateUI();
+    }
+    
+    public void AddHealth(int amount = 1)
+    {
+        if (gameOver) return;
+        
+        // Add health but don't exceed max
+        playerHealth = Mathf.Min(playerHealth + amount, maxPlayerHealth);
+        UpdateUI();
+    }
+    
+    public void AddAmmo(int amount = 1)
+    {
+        if (gameOver) return;
+        
+        // Add ammo but don't exceed max
+        ammunition = Mathf.Min(ammunition + amount, maxAmmunition);
+        
+        // Play coin pickup sound
+        if (coinPickupSound != null)
+        {
+            AudioSource.PlayClipAtPoint(coinPickupSound, Camera.main.transform.position);
+        }
+        
+        UpdateUI();
+    }
+    
+    // New method for adding coins
+    public void AddCoins(int amount = 1)
+    {
+        if (gameOver) return;
+        
+        // Add coins
+        coins += amount;
+        
+        // Play coin pickup sound
+        if (coinPickupSound != null)
+        {
+            AudioSource.PlayClipAtPoint(coinPickupSound, Camera.main.transform.position);
+        }
+        
+        UpdateUI();
+        Debug.Log("Coins collected: " + coins);
+    }
+    
+    public bool UseAmmo(int amount = 1)
+    {
+        // Check if we have enough ammo
+        if (ammunition >= amount)
+        {
+            ammunition -= amount;
+            UpdateUI();
+            return true;
+        }
+        
+        return false;
+    }
+    
+    // Optional: Method to spend coins (for upgrades, etc.)
+    public bool SpendCoins(int amount)
+    {
+        if (coins >= amount)
+        {
+            coins -= amount;
             UpdateUI();
             return true;
         }
