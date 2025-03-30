@@ -2,18 +2,16 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+
 public class GameUI : MonoBehaviour
 {
-    [Header("Score Display")]
-    [SerializeField] private GameObject scorePanel;
-    [SerializeField] private TextMeshProUGUI scoreText;
-    [SerializeField] private TextMeshProUGUI highScoreText;
-    private ScoreDisplayUI scoreDisplayUI;
+    [Header("HUD Elements")]
+    [SerializeField] private GameObject hudElementsPanel;
+    private HUDElements hudElements;
 
     [Header("Game Over Display")]
     [SerializeField] private GameObject backgroundPanel;
-    [SerializeField] private TextMeshProUGUI finalScoreText;
-    [SerializeField] private TextMeshProUGUI finalHighScoreText;
+    [SerializeField] private TextMeshProUGUI finalHeightText;
 
     [Header("Game Over Buttons")]
     [SerializeField] private Button retryButton;
@@ -27,27 +25,21 @@ public class GameUI : MonoBehaviour
     [SerializeField] private Button restartButton;
     [SerializeField] private Button pauseQuitButton;
     
-
     private void Awake()
     {
-        // Get or add ScoreDisplayUI component
-        scoreDisplayUI = scorePanel.GetComponent<ScoreDisplayUI>();
-        if (scoreDisplayUI == null)
+        // Get or add HUDElements component
+        hudElements = hudElementsPanel.GetComponent<HUDElements>();
+        if (hudElements == null)
         {
-            scoreDisplayUI = scorePanel.AddComponent<ScoreDisplayUI>();
-        }
-
-        // Set up the references in ScoreDisplayUI
-        if (scoreDisplayUI != null && scoreText != null && highScoreText != null)
-        {
-            scoreDisplayUI.SetTextReferences(scoreText, highScoreText);
+            hudElements = hudElementsPanel.AddComponent<HUDElements>();
         }
     }
 
     private void Start()
     {
-        if (scorePanel != null)
-            scorePanel.SetActive(true);
+        // Show HUD panel
+        if (hudElementsPanel != null)
+            hudElementsPanel.SetActive(true);
 
         if (backgroundPanel != null)
             backgroundPanel.SetActive(false);
@@ -69,34 +61,39 @@ public class GameUI : MonoBehaviour
 
         if (gameOverQuitButton != null)
             gameOverQuitButton.onClick.AddListener(QuitGame);
-
     }
 
-    // Public methods to update score
+    // HUD update methods (delegated to HUDElements)
+    public void UpdateHP(int hp)
+    {
+        if (hudElements != null)
+        {
+            hudElements.UpdateHP(hp);
+        }
+    }
+
+    public void UpdateAmmo(int ammo)
+    {
+        if (hudElements != null)
+        {
+            hudElements.UpdateAmmo(ammo);
+        }
+    }
+
     public void UpdateScore(int newScore)
     {
-        if (scoreDisplayUI != null)
+        if (hudElements != null)
         {
-            scoreDisplayUI.UpdateScore(newScore);
+            hudElements.UpdateScore(newScore);
         }
     }
 
-    public void AddPoints(int points)
+    public void UpdateMaxHeight(int height)
     {
-        if (scoreDisplayUI != null)
+        if (hudElements != null)
         {
-            scoreDisplayUI.AddPoints(points);
+            hudElements.UpdateMaxHeight(height);
         }
-    }
-
-    public int GetCurrentScore()
-    {
-        return scoreDisplayUI != null ? scoreDisplayUI.GetCurrentScore() : 0;
-    }
-
-    public int GetHighScore()
-    {
-        return scoreDisplayUI != null ? scoreDisplayUI.GetHighScore() : 0;
     }
 
     private void Update()
@@ -118,21 +115,14 @@ public class GameUI : MonoBehaviour
         if (isGameOver) return;
         isGameOver = true;
 
-        if (scoreDisplayUI != null)
+        if (hudElements != null && finalHeightText != null)
         {
-            int current = scoreDisplayUI.GetCurrentScore();
-            int high = scoreDisplayUI.GetHighScore();
-
-            if (finalScoreText != null)
-                finalScoreText.text = $"Final Score: {current:0000}";
-
-            if (finalHighScoreText != null)
-                finalHighScoreText.text = $"High Score: {high:0000}";
+            finalHeightText.text = $"Max Height: {hudElements.GetMaxHeight():0000}";
         }
 
-        // Hide live score panel
-        if (scorePanel != null)
-            scorePanel.SetActive(false);
+        // Hide HUD panel
+        if (hudElementsPanel != null)
+            hudElementsPanel.SetActive(false);
 
         // Show the game over panel
         if (backgroundPanel != null)
@@ -155,7 +145,7 @@ public class GameUI : MonoBehaviour
     private void RetryGame()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("InGame");
     }
 
     private void QuitGame()
@@ -166,6 +156,4 @@ public class GameUI : MonoBehaviour
             Application.Quit();
         #endif
     }
-
-
 } 

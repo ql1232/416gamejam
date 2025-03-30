@@ -74,8 +74,7 @@ public class MainMenuUI : MonoBehaviour
 
     private void OnPlayButtonClicked()
     {
-        // TODO: Implement game start logic
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("InGame");
     }
 
     private void OnSettingsButtonClicked()
