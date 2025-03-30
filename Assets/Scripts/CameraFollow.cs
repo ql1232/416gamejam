@@ -4,26 +4,30 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     public Transform player;
-    private Vector3 offset;
-    private float maxPlayerY, prevMaxY;
+player
+    private Vector3 displacement;
+    private float playerMaxY;
+main
 
     void Start()
     {
-        offset = transform.position - player.position;
-        maxPlayerY = player.position.y;
+        displacement = transform.position - player.position;
+        playerMaxY = player.position.y;
     }
 
     void Update()
     {
-	prevMaxY = maxPlayerY;
-        if(player.position.y > maxPlayerY)
-       {
-            maxPlayerY = player.position.y;
+    player
+        if (player.position.y  > playerMaxY)
+        {
+            playerMaxY = player.position.y;
         }
 
-        Vector3 desiredPosition = player.position + offset;
+        Vector3 desiredPosition = player.position + displacement;
+       
         desiredPosition.y = maxPlayerY + offset.y + 3;
 	desiredPosition.x -= 5;
+  main
         transform.position = desiredPosition;
 
 	checkAndPopulate();
