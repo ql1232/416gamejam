@@ -29,47 +29,56 @@ public class MockHUDTester : MonoBehaviour
     {
         if (gameUI == null) return;
 
-        // Only update score and height in InGame scene and when game is not over
-        if (SceneManager.GetActiveScene().name == "InGame" && !isGameOver)
+        // Only process keyboard inputs if we're not in the MainMenu scene
+        if (!IsInMainMenu())
         {
-            // Update score and height every second
-            timer += Time.deltaTime;
-            if (timer >= 1f)
+            // Only update score and height in InGame scene and when game is not over
+            if (SceneManager.GetActiveScene().name == "InGame" && !isGameOver)
             {
-                // Increment score and height
-                mockScore += 10;
-                mockHeight += 5;
-                
-                // Update HUD
-                gameUI.UpdateScore(mockScore);
-                gameUI.UpdateMaxHeight(mockHeight);
+                // Update score and height every second
+                timer += Time.deltaTime;
+                if (timer >= 1f)
+                {
+                    // Increment score and height
+                    mockScore += 10;
+                    mockHeight += 5;
+                    
+                    // Update HUD
+                    gameUI.UpdateScore(mockScore);
+                    gameUI.UpdateMaxHeight(mockHeight);
 
-                timer = 0f;
+                    timer = 0f;
+                }
+            }
+
+            // Press G to show game over screen
+            if (Input.GetKeyDown(KeyCode.G))
+            {
+                Debug.Log("Showing Game Over Screen!");
+                isGameOver = true;
+                gameUI.ShowGameOverScreen();
+            }
+
+            // Press H to decrease HP
+            if (Input.GetKeyDown(KeyCode.H) && !isGameOver)
+            {
+                mockHP = Mathf.Max(0, mockHP - 1);
+                gameUI.UpdateHP(mockHP);
+                Debug.Log($"HP decreased to: {mockHP}");
+            }
+
+            // Press M to decrease ammo
+            if (Input.GetKeyDown(KeyCode.M) && !isGameOver)
+            {
+                mockAmmo = Mathf.Max(0, mockAmmo - 1);
+                gameUI.UpdateAmmo(mockAmmo);
+                Debug.Log($"Ammo decreased to: {mockAmmo}");
             }
         }
+    }
 
-        // Press G to show game over screen
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            Debug.Log("Showing Game Over Screen!");
-            isGameOver = true;
-            gameUI.ShowGameOverScreen();
-        }
-
-        // Press H to decrease HP
-        if (Input.GetKeyDown(KeyCode.H) && !isGameOver)
-        {
-            mockHP = Mathf.Max(0, mockHP - 1);
-            gameUI.UpdateHP(mockHP);
-            Debug.Log($"HP decreased to: {mockHP}");
-        }
-
-        // Press A to decrease ammo
-        if (Input.GetKeyDown(KeyCode.A) && !isGameOver)
-        {
-            mockAmmo = Mathf.Max(0, mockAmmo - 1);
-            gameUI.UpdateAmmo(mockAmmo);
-            Debug.Log($"Ammo decreased to: {mockAmmo}");
-        }
+    private bool IsInMainMenu()
+    {
+        return SceneManager.GetActiveScene().name == "MainMenu";
     }
 } 

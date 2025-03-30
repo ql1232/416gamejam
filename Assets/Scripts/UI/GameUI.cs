@@ -98,16 +98,25 @@ public class GameUI : MonoBehaviour
 
     private void Update()
     {
-        // ESC to toggle Pause Menu
-        if (Input.GetKeyDown(KeyCode.Escape) && !isGameOver)
+        // Only process ESC key if we're not in the MainMenu scene
+        if (!IsInMainMenu())
         {
-            if (pauseMenuPanel != null)
+            // ESC to toggle Pause Menu
+            if (Input.GetKeyDown(KeyCode.Escape) && !isGameOver)
             {
-                bool isPaused = pauseMenuPanel.activeSelf;
-                pauseMenuPanel.SetActive(!isPaused);
-                Time.timeScale = isPaused ? 1f : 0f;
+                if (pauseMenuPanel != null)
+                {
+                    bool isPaused = pauseMenuPanel.activeSelf;
+                    pauseMenuPanel.SetActive(!isPaused);
+                    Time.timeScale = isPaused ? 1f : 0f;
+                }
             }
         }
+    }
+
+    private bool IsInMainMenu()
+    {
+        return SceneManager.GetActiveScene().name == "MainMenu";
     }
 
     public void ShowGameOverScreen()
