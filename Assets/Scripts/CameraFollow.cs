@@ -28,6 +28,7 @@ public class CameraFollow : MonoBehaviour
         Vector3 desiredPosition = player.position + offset;
         desiredPosition.y = maxPlayerY + offset.y + 3;
 	desiredPosition.x -= 5;
+	desiredPosition.z -=3;
         transform.position = desiredPosition;
 
 	checkAndPopulate();
@@ -36,24 +37,24 @@ public class CameraFollow : MonoBehaviour
    	 void checkAndPopulate(){
 		int level = (int) Mathf.Floor((maxPlayerY+10)/10);
 		if(level > (int) Mathf.Floor((prevMaxY+10)/10)){
-			int pop = (int) Random.Range(3,6);
+			int pop = 20;
 			float maxH = 30, maxV = 7;
 			float dirMod = 1;
 			if(player.position.x < 0){dirMod = -1;}
 			for(int n = 0; n<pop; n++){
-				if(maxH < 2 || maxV <1){
+				if(maxH < 2 && maxV <1){
 					break;
 				}
-				float distH = Random.Range(4, Mathf.Min(maxH, 8));
-				float distY = Random.Range(1, Mathf.Min(maxV, 3))/3;
+				float distH = Random.Range(2, Mathf.Min(maxH, 5));
+				float distY = Random.Range(1, Mathf.Min(maxV, 3));
 				int m = (int) Mathf.Floor(Random.Range(0,3));
 				GameObject temp = smallP;
-				if(m==0) {temp = medP;}
+				if(m==0) {temp = medP;if(Mathf.Abs(30-maxH) < 5){temp=smallP;}}
 				else if(m==1){temp=largeP;
 					if(Mathf.Abs(30-maxH) < 5){temp=smallP;}
 				}
 				maxH-=distH; maxV-=distY;
-				Instantiate(temp, new Vector3(dirMod*(15 - maxH),5-maxV + level*10 + n*10/pop,0), Quaternion.identity);
+				Instantiate(temp, new Vector3(dirMod*(15 - maxH),3-maxV + level*10,0), Quaternion.identity);
 			}
 		}
 	}	

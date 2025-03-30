@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;
-    public float jumpForce = 10f;
+    public float jumpForce = 7f;
 
     private Rigidbody rigidbody;
     private bool canJump = true;
@@ -188,31 +188,40 @@ public class PlayerMovement : MonoBehaviour
     
     void Update()
     {
-        // Movement code
-        float moveInput = Input.GetAxisRaw("Horizontal");
-        rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
-        
-        // Jump code
-        if (Input.GetKeyDown(KeyCode.Space) && canJump)
+        // Only process keyboard inputs if we're not in the MainMenu scene
+        if (!IsInMainMenu())
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-            canJump = false;
-        }
-        
-        // Crouch when X is pressed
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            StartCrouch();
-        }
-        
-        // Stand back up when X is released
-        if (Input.GetKeyUp(KeyCode.X))
-        {
-            StopCrouch();
+            // Movement code
+            float moveInput = Input.GetAxisRaw("Horizontal");
+            rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
+            
+            // Jump code
+            if (Input.GetKeyDown(KeyCode.Space) && canJump)
+            {
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+                canJump = false;
+            }
+            
+            // Crouch when X is pressed
+            if (Input.GetKeyDown(KeyCode.X))
+            {
+                StartCrouch();
+            }
+            
+            // Stand back up when X is released
+            if (Input.GetKeyUp(KeyCode.X))
+            {
+                StopCrouch();
+            }
         }
         
         // Handle the smooth transition for crouching/standing
         UpdateCrouchState();
+    }
+    
+    private bool IsInMainMenu()
+    {
+        return UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "MainMenu";
     }
     
     void StartCrouch()
