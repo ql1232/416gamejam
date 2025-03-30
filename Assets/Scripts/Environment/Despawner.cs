@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Despawner : MonoBehaviour
 {
-	float time = 5000;
+	float time = 500000;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
