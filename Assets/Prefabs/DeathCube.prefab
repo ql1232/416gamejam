@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6092253983836720117}
   - component: {fileID: 7254857697752294042}
   m_Layer: 0
-  m_Name: deathobject
+  m_Name: DeathCube
   m_TagString: obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
