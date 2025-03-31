@@ -58,7 +58,8 @@ public class CameraFollow : MonoBehaviour
 				m = (int) Mathf.Floor(Random.Range(0,3));
 				temp = barrel;
 				if(m==0) {temp = death;}
-				Instantiate(temp, new Vector3(dirMod*(20 - maxH),13-maxV + level*10 + n*10/pop,-0.5F), Quaternion.Euler(91.099F, 0, 0));
+				if(Random.Range(1,10) < 3){Instantiate(temp, new Vector3(dirMod*(20 - maxH),13-maxV + level*10 + n*10/pop,-0.5F), Quaternion.Euler(91.099F, 0, 0));
+}
 
 				}
 		}
