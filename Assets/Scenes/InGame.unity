@@ -4183,13 +4183,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1597447208165519840, guid: b12ce885e9a6e4f21bcf1918ebe68f13, type: 3}
+      propertyPath: sphereColor.b
+      value: 0.14456263
+      objectReference: {fileID: 0}
+    - target: {fileID: 1597447208165519840, guid: b12ce885e9a6e4f21bcf1918ebe68f13, type: 3}
+      propertyPath: sphereColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1597447208165519840, guid: b12ce885e9a6e4f21bcf1918ebe68f13, type: 3}
+      propertyPath: sphereColor.r
+      value: 0.9716981
+      objectReference: {fileID: 0}
     - target: {fileID: 5870803589571810370, guid: b12ce885e9a6e4f21bcf1918ebe68f13, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.5
+      value: 2.54
       objectReference: {fileID: 0}
     - target: {fileID: 5870803589571810370, guid: b12ce885e9a6e4f21bcf1918ebe68f13, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.24
+      value: 9.17
       objectReference: {fileID: 0}
     - target: {fileID: 5870803589571810370, guid: b12ce885e9a6e4f21bcf1918ebe68f13, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4226,7 +4238,7 @@ PrefabInstance:
     - target: {fileID: 7677838231442626086, guid: b12ce885e9a6e4f21bcf1918ebe68f13, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 73fb4f648e600449db092e88e16978a3, type: 2}
+      objectReference: {fileID: 2100000, guid: ae2db4ac415a99744817e3b7363cb432, type: 2}
     - target: {fileID: 8501093797754538570, guid: b12ce885e9a6e4f21bcf1918ebe68f13, type: 3}
       propertyPath: m_Name
       value: Sphere
