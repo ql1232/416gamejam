@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7628561689262847639}
   m_Layer: 0
   m_Name: barrel
-  m_TagString: Untagged
+  m_TagString: obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -137,7 +137,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 8
   m_CollisionDetection: 0
 --- !u!114 &7628561689262847639
 MonoBehaviour:
