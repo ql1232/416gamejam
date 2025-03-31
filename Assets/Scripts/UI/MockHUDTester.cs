@@ -4,9 +4,6 @@ using UnityEngine.SceneManagement;
 public class MockHUDTester : MonoBehaviour
 {
     private GameUI gameUI;
-    private float timer = 0f;
-    private int mockScore = 0;
-    private int mockHeight = 0;
     private int mockHP = 3;
     private int mockAmmo = 10;
     private bool isGameOver = false;
@@ -32,25 +29,6 @@ public class MockHUDTester : MonoBehaviour
         // Only process keyboard inputs if we're not in the MainMenu scene
         if (!IsInMainMenu())
         {
-            // Only update score and height in InGame scene and when game is not over
-            if (SceneManager.GetActiveScene().name == "InGame" && !isGameOver)
-            {
-                // Update score and height every second
-                timer += Time.deltaTime;
-                if (timer >= 1f)
-                {
-                    // Increment score and height
-                    mockScore += 10;
-                    mockHeight += 5;
-                    
-                    // Update HUD
-                    gameUI.UpdateScore(mockScore);
-                    gameUI.UpdateMaxHeight(mockHeight);
-
-                    timer = 0f;
-                }
-            }
-
             // Press G to show game over screen
             if (Input.GetKeyDown(KeyCode.G))
             {

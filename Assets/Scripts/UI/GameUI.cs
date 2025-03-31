@@ -72,6 +72,11 @@ public class GameUI : MonoBehaviour
         }
     }
 
+    public int GetCurrentHP()
+    {
+        return hudElements != null ? hudElements.GetCurrentHP() : 0;
+    }
+
     public void UpdateAmmo(int ammo)
     {
         if (hudElements != null)

@@ -9,7 +9,7 @@ public class CameraFollow : MonoBehaviour
 
 	public GameObject smallP;
 	public GameObject medP;
-	public GameObject largeP;
+	public GameObject largeP; public GameObject barrel; public GameObject death;
 
     void Start()
     {
@@ -55,7 +55,13 @@ public class CameraFollow : MonoBehaviour
 				}
 				maxH-=distH; maxV-=distY;
 				Instantiate(temp, new Vector3(dirMod*(15 - maxH),3-maxV + level*10,0), Quaternion.identity);
-			}
+				m = (int) Mathf.Floor(Random.Range(0,3));
+				temp = barrel;
+				if(m==0) {temp = death;}
+				if(Random.Range(1,10) < 3){Instantiate(temp, new Vector3(dirMod*(20 - maxH),13-maxV + level*10 + n*10/pop,-0.5F), Quaternion.Euler(91.099F, 0, 0));
+}
+
+				}
 		}
 	}	
 
