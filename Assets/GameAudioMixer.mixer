@@ -125,6 +125,7 @@ AudioMixerGroupController:
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: 5248366505471168777}
+  - {fileID: 7704313515775196147}
   m_UserColorIndex: 0
   m_Mute: 0
   m_Solo: 0
@@ -140,6 +141,30 @@ AudioMixerEffectController:
   m_EffectName: Attenuation
   m_MixLevel: 94553ce030ead4761bc721279f20f87d
   m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!244 &7704313515775196147
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 37425b93675fd42518ddd4cccbd083e9
+  m_EffectName: Echo
+  m_MixLevel: 0d31d514423e74ffcb290e388a58e556
+  m_Parameters:
+  - m_ParameterName: Delay
+    m_GUID: 6ec1b06028d1c4d279e6e5a9cc815024
+  - m_ParameterName: Decay
+    m_GUID: 7695c132033b44d068b16d5e498a8b4c
+  - m_ParameterName: Max channels
+    m_GUID: 4bd86d366047041198caa855281f1cd7
+  - m_ParameterName: Drymix
+    m_GUID: d86192d232d3f454589a8b77b0490f12
+  - m_ParameterName: Wetmix
+    m_GUID: 4726b16e9342543b7b8159dc4b6cda1c
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
