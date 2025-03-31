@@ -172,6 +172,10 @@ MonoBehaviour:
   jumpForce: 9
   crouchHeight: 0.5
   crouchSpeed: 0.1
+  jumpSound: {fileID: 8300000, guid: 4f806fb1952434a8d8a359df6c881192, type: 3}
+  crouchSound: {fileID: 8300000, guid: 617a102b76c6c4b9687774d7f26272a7, type: 3}
+  standSound: {fileID: 8300000, guid: 617a102b76c6c4b9687774d7f26272a7, type: 3}
+  soundVolume: 0.7
 --- !u!136 &56594107
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1176,6 +1180,11 @@ MonoBehaviour:
   moveSpeed: 3
   leftBoundary: -5
   rightBoundary: 5
+  deathSound: {fileID: 8300000, guid: 57e627fb9191c41959ccfe9683c25d8f, type: 3}
+  freezeSound: {fileID: 0}
+  slowdownSound: {fileID: 0}
+  returnToNormalSound: {fileID: 0}
+  soundVolume: 0.7
 --- !u!1 &762164905
 GameObject:
   m_ObjectHideFlags: 0
@@ -2419,6 +2428,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6040018081492647214, guid: 8685d90756b344c7ba76003156b78e01, type: 3}
+      propertyPath: collectSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 333bb7f0a8331493cb3570147cb11179, type: 3}
     - target: {fileID: 6447438328045839156, guid: 8685d90756b344c7ba76003156b78e01, type: 3}
       propertyPath: m_Name
       value: FreezeTimePowerUp
@@ -4436,6 +4449,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6806002544522929680, guid: 5dffefb307d6147b8b65e4139356db48, type: 3}
+      propertyPath: collectSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 333bb7f0a8331493cb3570147cb11179, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
