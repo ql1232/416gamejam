@@ -7,10 +7,16 @@ public class Shooting : MonoBehaviour
     public int maxAmmo = 50;
     private int currentAmmo;
     private float nextShotTime = 0f;
+    private GameUI gameUI;
 
     void Start()
     {
         currentAmmo = maxAmmo;
+        gameUI = FindObjectOfType<GameUI>();
+        if (gameUI != null)
+        {
+            gameUI.UpdateAmmo(currentAmmo);
+        }
     }
 
     void Update()
@@ -36,5 +42,9 @@ public class Shooting : MonoBehaviour
         }
 
         currentAmmo--;
+        if (gameUI != null)
+        {
+            gameUI.UpdateAmmo(currentAmmo);
+        }
     }
 }

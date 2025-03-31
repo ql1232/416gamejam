@@ -1,2 +1,17 @@
 fileFormatVersion: 2
 guid: 15363d36c56e2c64caa7927606815568
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - player: {instanceID: 0}
+  - smallP: {fileID: 7803699764293544518, guid: 7e5bdc3adbc4fd947bd062f9199a5856, type: 3}
+  - medP: {fileID: 3790993024699267949, guid: 5322060bbcbeb2a4dabaa56aeff95df6, type: 3}
+  - largeP: {fileID: 720426162622065052, guid: cf1d5a4f411389945bb2e3a1e4297fde, type: 3}
+  - barrel: {fileID: 2315851449231927550, guid: 112f4fe8e818d452c9134f31c6afc165, type: 3}
+  - death: {fileID: 8607894650171927588, guid: 5f74a6350b27e43238d6a3629ded9add, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
