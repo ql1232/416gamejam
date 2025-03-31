@@ -12,6 +12,7 @@ public class GameUI : MonoBehaviour
     [Header("Game Over Display")]
     [SerializeField] private GameObject backgroundPanel;
     [SerializeField] private TextMeshProUGUI finalHeightText;
+    [SerializeField] private TextMeshProUGUI finalScoreText;
 
     [Header("Game Over Buttons")]
     [SerializeField] private Button retryButton;
@@ -129,9 +130,16 @@ public class GameUI : MonoBehaviour
         if (isGameOver) return;
         isGameOver = true;
 
-        if (hudElements != null && finalHeightText != null)
+        if (hudElements != null)
         {
-            finalHeightText.text = $"Max Height: {hudElements.GetMaxHeight():0000}";
+            if (finalScoreText != null)
+            {
+                finalScoreText.text = $"Final Score: {hudElements.GetCurrentScore():0000}";
+            }
+            if (finalHeightText != null)
+            {
+                finalHeightText.text = $"Max Height: {hudElements.GetMaxHeight():0000}";
+            }
         }
 
         // Hide HUD panel
