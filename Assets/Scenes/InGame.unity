@@ -572,7 +572,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 16
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -2867,7 +2867,7 @@ MonoBehaviour:
   hudElementsPanel: {fileID: 585871474}
   backgroundPanel: {fileID: 1763704455}
   finalHeightText: {fileID: 1309265534}
-  finalScoreText: {fileID: 0}
+  finalScoreText: {fileID: 1010317271}
   retryButton: {fileID: 793239306}
   gameOverQuitButton: {fileID: 763979398}
   pauseMenuPanel: {fileID: 640898916}
