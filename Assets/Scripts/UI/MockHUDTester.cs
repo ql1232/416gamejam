@@ -34,6 +34,7 @@ public class MockHUDTester : MonoBehaviour
             {
                 Debug.Log("Showing Game Over Screen!");
                 isGameOver = true;
+		gameUI.UpdateHP(-50);
                 gameUI.ShowGameOverScreen();
             }
 
