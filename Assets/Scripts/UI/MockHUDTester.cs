@@ -5,7 +5,7 @@ public class MockHUDTester : MonoBehaviour
 {
     private GameUI gameUI;
     private int mockHP = 3;
-    private int mockAmmo = 10;
+    private int mockAmmo = 50;
     private bool isGameOver = false;
 
     private void Start()

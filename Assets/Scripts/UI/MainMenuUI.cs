@@ -7,17 +7,14 @@ public class MainMenuUI : MonoBehaviour
 {
     [Header("Menu Panels")]
     [SerializeField] private GameObject mainMenuPanel;
-    [SerializeField] private GameObject settingsPanel;
     [SerializeField] private GameObject creditsPanel;
     [SerializeField] private GameObject howToPlayPanel;
 
     [Header("Buttons")]
     [SerializeField] private Button playButton;
-    [SerializeField] private Button settingsButton;
     [SerializeField] private Button creditsButton;
     [SerializeField] private Button howToPlayButton;
     [SerializeField] private Button quitButton;
-    [SerializeField] private Button settingsBackButton;
     [SerializeField] private Button creditsBackButton;
     [SerializeField] private Button howToPlayBackButton;
 
@@ -25,7 +22,6 @@ public class MainMenuUI : MonoBehaviour
     [SerializeField] private GameObject backgroundMusicManagerPrefab;
 
     private UIPanelAnimator mainMenuAnimator;
-    private UIPanelAnimator settingsAnimator;
     private UIPanelAnimator creditsAnimator;
     private UIPanelAnimator howToPlayAnimator;
 
@@ -39,15 +35,18 @@ public class MainMenuUI : MonoBehaviour
 
         // Get or add panel animators
         mainMenuAnimator = mainMenuPanel.GetComponent<UIPanelAnimator>();
-        settingsAnimator = settingsPanel.GetComponent<UIPanelAnimator>();
         creditsAnimator = creditsPanel.GetComponent<UIPanelAnimator>();
         howToPlayAnimator = howToPlayPanel.GetComponent<UIPanelAnimator>();
 
         // Add CanvasGroup components if they don't exist
         if (mainMenuAnimator == null) mainMenuAnimator = mainMenuPanel.AddComponent<UIPanelAnimator>();
-        if (settingsAnimator == null) settingsAnimator = settingsPanel.AddComponent<UIPanelAnimator>();
         if (creditsAnimator == null) creditsAnimator = creditsPanel.AddComponent<UIPanelAnimator>();
         if (howToPlayAnimator == null) howToPlayAnimator = howToPlayPanel.AddComponent<UIPanelAnimator>();
+
+        // Ensure only main menu panel is visible at startup
+        if (creditsPanel != null) creditsPanel.SetActive(false);
+        if (howToPlayPanel != null) howToPlayPanel.SetActive(false);
+        if (mainMenuPanel != null) mainMenuPanel.SetActive(true);
     }
 
     private void Start()
@@ -55,9 +54,6 @@ public class MainMenuUI : MonoBehaviour
         // Initialize button listeners
         if (playButton != null)
             playButton.onClick.AddListener(OnPlayButtonClicked);
-        
-        if (settingsButton != null)
-            settingsButton.onClick.AddListener(OnSettingsButtonClicked);
         
         if (creditsButton != null)
             creditsButton.onClick.AddListener(OnCreditsButtonClicked);
@@ -67,9 +63,6 @@ public class MainMenuUI : MonoBehaviour
         
         if (quitButton != null)
             quitButton.onClick.AddListener(OnQuitButtonClicked);
-        
-        if (settingsBackButton != null)
-            settingsBackButton.onClick.AddListener(OnBackButtonClicked);
         
         if (creditsBackButton != null)
             creditsBackButton.onClick.AddListener(OnBackButtonClicked);
@@ -84,11 +77,6 @@ public class MainMenuUI : MonoBehaviour
     private void OnPlayButtonClicked()
     {
         SceneManager.LoadScene("InGame");
-    }
-
-    private void OnSettingsButtonClicked()
-    {
-        ShowPanel(settingsPanel);
     }
 
     private void OnCreditsButtonClicked()
@@ -122,10 +110,6 @@ public class MainMenuUI : MonoBehaviour
         {
             mainMenuAnimator.HidePanel();
         }
-        if (panel != settingsPanel && settingsPanel.activeSelf)
-        {
-            settingsAnimator.HidePanel();
-        }
         if (panel != creditsPanel && creditsPanel.activeSelf)
         {
             creditsAnimator.HidePanel();
@@ -139,10 +123,6 @@ public class MainMenuUI : MonoBehaviour
         if (panel == mainMenuPanel)
         {
             mainMenuAnimator.ShowPanel();
-        }
-        else if (panel == settingsPanel)
-        {
-            settingsAnimator.ShowPanel();
         }
         else if (panel == creditsPanel)
         {

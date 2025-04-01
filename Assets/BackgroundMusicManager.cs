@@ -36,13 +36,4 @@ public class BackgroundMusicManager : MonoBehaviour
             audioSource.Play();
         }
     }
-    
-    // Method to set music volume from your UI slider
-    public void SetMasterVolume(float volume)
-    {
-        if (audioSource != null)
-        {
-            audioSource.volume = volume;
-        }
-    }
 }
