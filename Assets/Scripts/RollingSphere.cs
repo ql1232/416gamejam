@@ -495,6 +495,11 @@ public class DeathRollingSphere : MonoBehaviour
                 }
             }
         }
+        if (other.gameObject.layer == 8)  // Layer 8 is Bullet
+        {
+            Destroy(other.gameObject);  // Destroy the bullet
+            Destroy(gameObject);        // Destroy the deathcube
+        }
     }
     
     // For debugging: show the direction to player
