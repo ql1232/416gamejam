@@ -2624,6 +2624,7 @@ MonoBehaviour:
   settingsBackButton: {fileID: 1404506180}
   creditsBackButton: {fileID: 2006788735}
   howToPlayBackButton: {fileID: 1793422554}
+  backgroundMusicManagerPrefab: {fileID: 1234567890, guid: e73ee5fd094cc4cdf8f4078a8c386c72, type: 3}
 --- !u!4 &1108283737
 Transform:
   m_ObjectHideFlags: 0
