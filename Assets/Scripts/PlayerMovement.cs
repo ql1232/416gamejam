@@ -126,6 +126,7 @@ public class PlayerMovement : MonoBehaviour
         {
             // Gradually decrease height to crouch height
 		GetComponent<CapsuleCollider>().height=0.1F;
+		GetComponent<CapsuleCollider>().center = new Vector3(GetComponent<CapsuleCollider>().center.x, -0.5F, GetComponent<CapsuleCollider>().center.z);
             targetScale.y = 0.1F;
 		targetScaleM.y = Mathf.Lerp(targetScaleM.y, 0.7F, crouchSpeed);
         }
@@ -133,12 +134,14 @@ public class PlayerMovement : MonoBehaviour
         {
             // Gradually increase height back to original
 		targetScale.y = Mathf.Lerp(targetScale.y, 1, crouchSpeed);
-		GetComponent<CapsuleCollider>().height=2F;	
+		GetComponent<CapsuleCollider>().height=2F;
+		
+		GetComponent<CapsuleCollider>().center = new Vector3(GetComponent<CapsuleCollider>().center.x, 0, GetComponent<CapsuleCollider>().center.z);
+
             targetScaleM.y = Mathf.Lerp(targetScaleM.y, 7, crouchSpeed);
         }
         
-        // Apply the new scale
-Debug.Log(targetScale.y);
+        // Apply the new scale	
         playerModel.localScale = targetScale;
 	gameObject.transform.GetChild(0).gameObject.transform.localScale = targetScaleM;
     }
