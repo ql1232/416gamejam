@@ -11,12 +11,10 @@ public class SettingsManager : MonoBehaviour
     [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private Slider masterVolumeSlider;
     [SerializeField] private Slider musicVolumeSlider;
-    [SerializeField] private Slider sfxVolumeSlider;
 
     // Default values
     private const float DEFAULT_MASTER_VOLUME = 1f;
     private const float DEFAULT_MUSIC_VOLUME = 1f;
-    private const float DEFAULT_SFX_VOLUME = 1f;
 
     private void Start()
     {
@@ -38,12 +36,6 @@ public class SettingsManager : MonoBehaviour
         {
             musicVolumeSlider.value = PlayerPrefs.GetFloat("MusicVolume", DEFAULT_MUSIC_VOLUME);
             musicVolumeSlider.onValueChanged.AddListener(SetMusicVolume);
-        }
-
-        if (sfxVolumeSlider != null)
-        {
-            sfxVolumeSlider.value = PlayerPrefs.GetFloat("SFXVolume", DEFAULT_SFX_VOLUME);
-            sfxVolumeSlider.onValueChanged.AddListener(SetSFXVolume);
         }
 
         // Apply saved audio settings
@@ -74,22 +66,12 @@ public class SettingsManager : MonoBehaviour
         }
     }
 
-    public void SetSFXVolume(float volume)
-    {
-        if (audioMixer != null)
-        {
-            audioMixer.SetFloat("SFXVolume", Mathf.Log10(volume) * 20);
-            PlayerPrefs.SetFloat("SFXVolume", volume);
-        }
-    }
-
     private void ApplyAudioSettings()
     {
         if (audioMixer != null)
         {
             SetMasterVolume(PlayerPrefs.GetFloat("MasterVolume", DEFAULT_MASTER_VOLUME));
             SetMusicVolume(PlayerPrefs.GetFloat("MusicVolume", DEFAULT_MUSIC_VOLUME));
-            SetSFXVolume(PlayerPrefs.GetFloat("SFXVolume", DEFAULT_SFX_VOLUME));
         }
     }
 
@@ -113,12 +95,6 @@ public class SettingsManager : MonoBehaviour
         {
             musicVolumeSlider.value = DEFAULT_MUSIC_VOLUME;
             PlayerPrefs.SetFloat("MusicVolume", DEFAULT_MUSIC_VOLUME);
-        }
-
-        if (sfxVolumeSlider != null)
-        {
-            sfxVolumeSlider.value = DEFAULT_SFX_VOLUME;
-            PlayerPrefs.SetFloat("SFXVolume", DEFAULT_SFX_VOLUME);
         }
 
         // Apply the reset audio settings
