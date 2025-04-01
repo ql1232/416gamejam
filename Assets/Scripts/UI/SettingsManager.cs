@@ -10,11 +10,9 @@ public class SettingsManager : MonoBehaviour
     [Header("Audio Settings")]
     [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private Slider masterVolumeSlider;
-    [SerializeField] private Slider musicVolumeSlider;
 
     // Default values
     private const float DEFAULT_MASTER_VOLUME = 1f;
-    private const float DEFAULT_MUSIC_VOLUME = 1f;
 
     private void Start()
     {
@@ -30,12 +28,6 @@ public class SettingsManager : MonoBehaviour
         {
             masterVolumeSlider.value = PlayerPrefs.GetFloat("MasterVolume", DEFAULT_MASTER_VOLUME);
             masterVolumeSlider.onValueChanged.AddListener(SetMasterVolume);
-        }
-
-        if (musicVolumeSlider != null)
-        {
-            musicVolumeSlider.value = PlayerPrefs.GetFloat("MusicVolume", DEFAULT_MUSIC_VOLUME);
-            musicVolumeSlider.onValueChanged.AddListener(SetMusicVolume);
         }
 
         // Apply saved audio settings
@@ -57,21 +49,11 @@ public class SettingsManager : MonoBehaviour
         }
     }
 
-    public void SetMusicVolume(float volume)
-    {
-        if (audioMixer != null)
-        {
-            audioMixer.SetFloat("MusicVolume", Mathf.Log10(volume) * 20);
-            PlayerPrefs.SetFloat("MusicVolume", volume);
-        }
-    }
-
     private void ApplyAudioSettings()
     {
         if (audioMixer != null)
         {
             SetMasterVolume(PlayerPrefs.GetFloat("MasterVolume", DEFAULT_MASTER_VOLUME));
-            SetMusicVolume(PlayerPrefs.GetFloat("MusicVolume", DEFAULT_MUSIC_VOLUME));
         }
     }
 
@@ -89,12 +71,6 @@ public class SettingsManager : MonoBehaviour
         {
             masterVolumeSlider.value = DEFAULT_MASTER_VOLUME;
             PlayerPrefs.SetFloat("MasterVolume", DEFAULT_MASTER_VOLUME);
-        }
-
-        if (musicVolumeSlider != null)
-        {
-            musicVolumeSlider.value = DEFAULT_MUSIC_VOLUME;
-            PlayerPrefs.SetFloat("MusicVolume", DEFAULT_MUSIC_VOLUME);
         }
 
         // Apply the reset audio settings

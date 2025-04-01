@@ -4,30 +4,28 @@ public class BackgroundMusicManager : MonoBehaviour
 {
     public AudioClip backgroundMusic;
     private AudioSource audioSource;
-    
-    // Singleton pattern to ensure only one music manager exists
     public static BackgroundMusicManager instance;
     
     void Awake()
     {
-        // If an instance already exists, destroy this one
         if (instance != null)
         {
             Destroy(gameObject);
             return;
         }
         
-        // Make this the instance and don't destroy it when loading new scenes
         instance = this;
-        DontDestroyOnLoad(gameObject);
         
-        // Add and configure AudioSource
-        audioSource = gameObject.AddComponent<AudioSource>();
+        GameObject musicObject = new GameObject("BackgroundMusic");
+        audioSource = musicObject.AddComponent<AudioSource>();
         audioSource.clip = backgroundMusic;
         audioSource.loop = true;
         audioSource.playOnAwake = true;
-        audioSource.volume = 0.5f; // Default volume - can be adjusted through your UI
+        audioSource.volume = 0.5f; // Default volume
         audioSource.ignoreListenerPause = true; // Prevent music from freezing when game is paused
+        
+        // Make the music object persist between scenes
+        DontDestroyOnLoad(musicObject);
     }
     
     void Start()
@@ -40,7 +38,7 @@ public class BackgroundMusicManager : MonoBehaviour
     }
     
     // Method to set music volume from your UI slider
-    public void SetMusicVolume(float volume)
+    public void SetMasterVolume(float volume)
     {
         if (audioSource != null)
         {

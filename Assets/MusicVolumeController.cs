@@ -1,35 +1,35 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MusicVolumeController : MonoBehaviour
+public class MasterVolumeController : MonoBehaviour
 {
-    private Slider musicVolumeSlider;
+    private Slider masterVolumeSlider;
     
     void Start()
     {
         // Get the slider component
-        musicVolumeSlider = GetComponent<Slider>();
+        masterVolumeSlider = GetComponent<Slider>();
         
-        if (musicVolumeSlider != null)
+        if (masterVolumeSlider != null)
         {
             // Set initial value based on current volume
             if (BackgroundMusicManager.instance != null && 
                 BackgroundMusicManager.instance.GetComponent<AudioSource>() != null)
             {
-                musicVolumeSlider.value = BackgroundMusicManager.instance.GetComponent<AudioSource>().volume;
+                masterVolumeSlider.value = BackgroundMusicManager.instance.GetComponent<AudioSource>().volume;
             }
             
             // Add listener for when value changes
-            musicVolumeSlider.onValueChanged.AddListener(OnMusicVolumeChanged);
+            masterVolumeSlider.onValueChanged.AddListener(OnMasterVolumeChanged);
         }
     }
     
-    void OnMusicVolumeChanged(float value)
+    void OnMasterVolumeChanged(float value)
     {
-        // Update the music volume when slider changes
+        // Update the master volume when slider changes
         if (BackgroundMusicManager.instance != null)
         {
-            BackgroundMusicManager.instance.SetMusicVolume(value);
+            BackgroundMusicManager.instance.SetMasterVolume(value);
         }
     }
 }
