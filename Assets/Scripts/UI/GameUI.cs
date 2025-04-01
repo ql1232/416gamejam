@@ -94,6 +94,15 @@ public class GameUI : MonoBehaviour
         }
     }
 
+
+    public void IncrementScore(int newScore)
+    {
+        if (hudElements != null)
+        {
+            hudElements.UpdateScore(hudElements.GetCurrentScore() + newScore);
+        }
+    }
+
     public void UpdateMaxHeight(int height)
     {
         if (hudElements != null)

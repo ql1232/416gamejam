@@ -146,6 +146,7 @@ public class DeathCubeController : MonoBehaviour
         // Check if the cube collided with a Bullet (layer 8)
         if (other.gameObject.layer == 8)  // Layer 8 is Bullet
         {
+		gameUI.IncrementScore(20);
             Destroy(other.gameObject);  // Destroy the bullet
             Destroy(gameObject);        // Destroy the deathcube
         }

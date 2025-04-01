@@ -32,12 +32,13 @@ public class ScoreManager : MonoBehaviour
         // Update highest height if we've reached a new maximum
         if (currentHeight > highestHeight)
         {
-            highestHeight = currentHeight;
+		int temp = (int) highestHeight;
+            highestHeight = (int)currentHeight;
             currentScore = Mathf.RoundToInt(highestHeight);
             
             // Update UI with new values
-            gameUI.UpdateMaxHeight(currentScore);
-            gameUI.UpdateScore(currentScore);
+            gameUI.UpdateMaxHeight((int)currentScore);
+            gameUI.IncrementScore((int)(currentScore-temp));
         }
     }
 } 
