@@ -10,7 +10,7 @@ public class CameraFollow : MonoBehaviour
 	public GameObject smallP;
 	public GameObject medP;
 	public GameObject largeP; public GameObject barrel; public GameObject death;
-
+	public GameObject freeze, reduce;
     void Start()
     {
         offset = transform.position - player.position;
@@ -55,9 +55,9 @@ public class CameraFollow : MonoBehaviour
 				}
 				maxH-=distH; maxV-=distY;
 				Instantiate(temp, new Vector3(dirMod*(15 - maxH),3-maxV + level*10,0), Quaternion.identity);
-				m = (int) Mathf.Floor(Random.Range(0,3));
+				m = (int) Mathf.Floor(Random.Range(0,8));
 				temp = barrel;
-				if(m==0) {temp = death;}
+				if(m<2) {temp = death;} else if (m<4){temp = freeze;} else if(m<6){temp=reduce;}
 				if(Random.Range(1,10) < 3){Instantiate(temp, new Vector3(dirMod*(20 - maxH),13-maxV + level*10 + n*10/pop,-0.5F), Quaternion.Euler(91.099F, 0, 0));
 }
 

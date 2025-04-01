@@ -2311,6 +2311,8 @@ MonoBehaviour:
   largeP: {fileID: 554971315}
   barrel: {fileID: 8501093797754538570, guid: b12ce885e9a6e4f21bcf1918ebe68f13, type: 3}
   death: {fileID: 1833789126660121165, guid: 792c53c02495cd0419008cbf954fe9e6, type: 3}
+  freeze: {fileID: 6447438328045839156, guid: 8685d90756b344c7ba76003156b78e01, type: 3}
+  reduce: {fileID: 1494316282994100297, guid: 5dffefb307d6147b8b65e4139356db48, type: 3}
 --- !u!114 &1105833743
 MonoBehaviour:
   m_ObjectHideFlags: 0
