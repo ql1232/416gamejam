@@ -3318,7 +3318,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.2, y: 0, z: 5.01}
-  m_LocalScale: {x: 30, y: 40, z: 5}
+  m_LocalScale: {x: 34.722, y: 40, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -4335,7 +4335,7 @@ PrefabInstance:
     - target: {fileID: 7677838231442626086, guid: b12ce885e9a6e4f21bcf1918ebe68f13, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: ae2db4ac415a99744817e3b7363cb432, type: 2}
+      objectReference: {fileID: 2100000, guid: d7345edb353d0794296950a9adb3ad4d, type: 2}
     - target: {fileID: 8501093797754538570, guid: b12ce885e9a6e4f21bcf1918ebe68f13, type: 3}
       propertyPath: m_Name
       value: Sphere
@@ -4788,6 +4788,10 @@ PrefabInstance:
       propertyPath: deathSound
       value: 
       objectReference: {fileID: 8300000, guid: e6f9e38dc4d474c8cac5e0027136583e, type: 3}
+    - target: {fileID: 4218614275456664988, guid: 792c53c02495cd0419008cbf954fe9e6, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 7ea77b3e49c1d61409582be7e98d0d61, type: 2}
     - target: {fileID: 8934576233573304419, guid: 792c53c02495cd0419008cbf954fe9e6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.39

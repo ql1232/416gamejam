@@ -67,7 +67,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: d7345edb353d0794296950a9adb3ad4d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -154,3 +154,8 @@ MonoBehaviour:
   maxSpeed: 10
   rollTowardPlayer: 1
   dropOnStart: 1
+  sphereColor: {r: 1, g: 0, b: 0, a: 1}
+  damageAmount: 1
+  knockbackForce: 5
+  invincibilityTime: 1.5
+  hitSound: {fileID: 0}
