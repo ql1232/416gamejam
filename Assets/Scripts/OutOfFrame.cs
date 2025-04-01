@@ -27,7 +27,7 @@ public class OutOfFrame : MonoBehaviour
             hasFallen = true;
             if (gameUI != null)
             {
-                gameUI.UpdateHP(gameUI.GetCurrentHP() - 1);
+                gameUI.UpdateHP(gameUI.GetCurrentHP() - 50);
                 if (gameUI.GetCurrentHP() <= 0)
                 {
                     gameUI.ShowGameOverScreen();

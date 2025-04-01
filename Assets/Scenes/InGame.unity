@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   userCamera: {fileID: 1105833740}
-  margin: 14
+  margin: 8
 --- !u!114 &56594106
 MonoBehaviour:
   m_ObjectHideFlags: 0
