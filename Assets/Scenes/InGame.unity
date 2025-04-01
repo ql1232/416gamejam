@@ -169,7 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   jumpForce: 9
-  crouchHeight: 0.5
+  crouchHeight: 0.1
   crouchSpeed: 0.1
   jumpSound: {fileID: 8300000, guid: 4f806fb1952434a8d8a359df6c881192, type: 3}
   crouchSound: {fileID: 8300000, guid: 617a102b76c6c4b9687774d7f26272a7, type: 3}

@@ -120,23 +120,24 @@ public class PlayerMovement : MonoBehaviour
     
     void UpdateCrouchState()
     {
-        Vector3 targetScale = playerModel.localScale;
+        Vector3 targetScale = gameObject.transform.localScale;
 	Vector3 targetScaleM = gameObject.transform.GetChild(0).gameObject.transform.localScale;
         
         if (isCrouching)
         {
             // Gradually decrease height to crouch height
-            targetScale.y = Mathf.Lerp(targetScale.y, crouchHeight, crouchSpeed);
-		targetScaleM.y = Mathf.Lerp(targetScaleM.y, 3.5F, crouchSpeed);
+            targetScale.y = 0.1F;
+		targetScaleM.y = Mathf.Lerp(targetScaleM.y, 0.7F, crouchSpeed);
         }
         else
         {
             // Gradually increase height back to original
-		targetScale.y = Mathf.Lerp(targetScale.y, originalHeight, crouchSpeed);	
+		targetScale.y = Mathf.Lerp(targetScale.y, 1, crouchSpeed);	
             targetScaleM.y = Mathf.Lerp(targetScaleM.y, 7, crouchSpeed);
         }
         
         // Apply the new scale
+Debug.Log(targetScale.y);
         playerModel.localScale = targetScale;
 	gameObject.transform.GetChild(0).gameObject.transform.localScale = targetScaleM;
     }
