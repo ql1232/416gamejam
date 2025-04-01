@@ -22,7 +22,6 @@ public class PlayerMovement : MonoBehaviour
     private bool isCrouching = false;  // Track crouch state
     private Transform playerModel;     // Reference to the visual model
     private AudioSource audioSource;   // Reference to the audio source
-    
     void Start()
     {
 	gameUI = FindObjectOfType<GameUI>();
@@ -126,13 +125,15 @@ public class PlayerMovement : MonoBehaviour
         if (isCrouching)
         {
             // Gradually decrease height to crouch height
+		GetComponent<CapsuleCollider>().height=0.1F;
             targetScale.y = 0.1F;
 		targetScaleM.y = Mathf.Lerp(targetScaleM.y, 0.7F, crouchSpeed);
         }
         else
         {
             // Gradually increase height back to original
-		targetScale.y = Mathf.Lerp(targetScale.y, 1, crouchSpeed);	
+		targetScale.y = Mathf.Lerp(targetScale.y, 1, crouchSpeed);
+		GetComponent<CapsuleCollider>().height=2F;	
             targetScaleM.y = Mathf.Lerp(targetScaleM.y, 7, crouchSpeed);
         }
         
