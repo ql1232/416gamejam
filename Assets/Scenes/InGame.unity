@@ -4755,6 +4755,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeathCube
       objectReference: {fileID: 0}
+    - target: {fileID: 3200277669691541374, guid: 792c53c02495cd0419008cbf954fe9e6, type: 3}
+      propertyPath: deathSound
+      value: 
+      objectReference: {fileID: 8300000, guid: e6f9e38dc4d474c8cac5e0027136583e, type: 3}
     - target: {fileID: 8934576233573304419, guid: 792c53c02495cd0419008cbf954fe9e6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.39
