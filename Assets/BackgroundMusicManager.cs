@@ -27,6 +27,7 @@ public class BackgroundMusicManager : MonoBehaviour
         audioSource.loop = true;
         audioSource.playOnAwake = true;
         audioSource.volume = 0.5f; // Default volume - can be adjusted through your UI
+        audioSource.ignoreListenerPause = true; // Prevent music from freezing when game is paused
     }
     
     void Start()

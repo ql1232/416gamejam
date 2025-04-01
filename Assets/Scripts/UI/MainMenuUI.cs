@@ -21,6 +21,9 @@ public class MainMenuUI : MonoBehaviour
     [SerializeField] private Button creditsBackButton;
     [SerializeField] private Button howToPlayBackButton;
 
+    [Header("Audio")]
+    [SerializeField] private GameObject backgroundMusicManagerPrefab;
+
     private UIPanelAnimator mainMenuAnimator;
     private UIPanelAnimator settingsAnimator;
     private UIPanelAnimator creditsAnimator;
@@ -28,6 +31,12 @@ public class MainMenuUI : MonoBehaviour
 
     private void Awake()
     {
+        // Create background music manager if it doesn't exist
+        if (BackgroundMusicManager.instance == null && backgroundMusicManagerPrefab != null)
+        {
+            Instantiate(backgroundMusicManagerPrefab);
+        }
+
         // Get or add panel animators
         mainMenuAnimator = mainMenuPanel.GetComponent<UIPanelAnimator>();
         settingsAnimator = settingsPanel.GetComponent<UIPanelAnimator>();
